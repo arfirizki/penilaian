@@ -1,0 +1,301 @@
+<?php
+    $tgl = date('Y-m-d');
+    $prevN = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
+    $bulan = tglIndonesia(date('F Y', $prevN));
+?>
+<body id="page-top">
+  <div class="container-fluid"> 
+<div class="row">
+            
+            <div class="col-lg-5">
+
+              <!-- Circle Buttons -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"><?php echo $title ?> Pegawai</h6>
+                </div>
+                <form autocomplete="off">
+                <div class="card-body">
+                  <div class="form-group row">
+                      <label for="tanggal" class="col-sm-4 col-form-label">Bulan </label>
+                      <div class="col-sm-8">
+                          <input type="text" readonly="" id="bulan" name="bulan" value="<?php echo $bulan ?>" class="form-control"  required>
+                      </div>
+                  </div>  
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Penilai </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="penilai" name="penilai" value="<?=$user['name']?>" readonly="">
+                    </div>
+                  </div>  
+                  <div class="form-group row">
+                  <label for="rekening" class="col-sm-4 col-form-label">ID Pegawai</label>
+                  <div class="input-group col-sm-8">
+                    <input type="text" name="idpegawai" id="idpegawai" class="form-control" readonly="" autofocus="">
+                    <?=form_error('kode')?>
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </span>
+                    
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Nama </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="nama" name="nama" value="" readonly="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-8">
+                        <input type="hidden" class="form-control" id="divisi" name="divisi" value="" readonly="">
+                    </div>
+                </div>    
+                       
+                    </div>
+                  </div>
+
+                </div>
+            
+            <div class="col-lg-7">
+
+              <!-- Circle Buttons -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Form Penilaian</h6>
+                </div>
+                <div class="card-body">
+                  <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Kedisiplinan </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="kedisiplinan" name="kedisiplinan"  required>
+                      </div>
+                </div>  
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Kesetiaan </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="kesetiaan" name="kesetiaan"  required>
+                      </div>
+                </div> 
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Prestasi Kerja </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="prestasi_kerja" name="prestasi_kerja"  required>
+                      </div>
+                </div> 
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Tanggung Jawab </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="tanggung_jawab" name="tanggung_jawab"  required>
+                      </div>
+                </div> 
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Ketaatan </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="ketaatan" name="ketaatan"  required>
+                      </div>
+                </div> 
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Kejujuran </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="kejujuran" name="kejujuran"  required>
+                      </div>
+                </div> 
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Kerjasama </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="kerjasama" name="kerjasama"  required>
+                      </div>
+                </div> 
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Prakarsa </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="prakarsa" name="prakarsa"  required>
+                      </div>
+                </div> 
+                <div class="form-group row">
+                      <label for="Kategori" class="col-sm-4 col-form-label">Kepemimpinan </label>       
+                      <div class="col-sm-8">                      
+                        <input type="number" onchange="handleChange(this);" class="form-control" id="kepemimpinan" name="kepemimpinan"  required>
+                      </div>
+                </div> 
+                <button type="button" id="add" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Input</button>
+                </div>
+                </div>
+              </div>
+              </form> 
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+<div class="modal fade" id="modal-item" tabindex="-1" role="dialog" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newMenuModalLabel">Pilih Pegawai</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th style="text-align: center;width: 30px;">No.</th>
+                      <th style="text-align: center">Id Pegawai</th>
+                      <th style="text-align: center">Nama</th>
+                      <th style="text-align: center;width: 200px;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($karyawan as $m) : ?>
+                        <tr>
+                            <td><?= $i; ?></td>
+                            <td><?= $m['kode']; ?></td>
+                            <td><?= $m['nama']; ?></td>
+                            <td class="text-center">
+                              <button class="btn btn-xs btn-info" id="select" 
+                              data-kode="<?=$m['kode'] ?>"
+                              data-nama="<?=$m['nama']; ?>"
+                              data-divisi="<?=$m['divisi']; ?>">
+                              <i class="fa fa-check"></i> Select
+                              </button>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+</div>
+      </body>
+    </div>
+
+<script>
+  $(document).on('click','#select', function()
+    {
+      $('#idpegawai').val($(this).data('kode'))
+      $('#nama').val($(this).data('nama'))
+      $('#divisi').val($(this).data('divisi'))
+      $('#modal-item').modal('hide')
+    }
+)  
+</script>
+<script>
+$(document).on('click','#add', function () {
+  if (confirm('Apakah Nilai Sudah Benar?')) {
+      var penilai = $('#penilai').val()
+      var bulan = $('#bulan').val()
+      var kode = $('#idpegawai').val()
+      var nama = $('#nama').val()
+      var divisi = $('#divisi').val()
+      var kedisiplinan = $('#kedisiplinan').val()
+      var kesetiaan = $('#kesetiaan').val()
+      var prestasi_kerja = $('#prestasi_kerja').val()
+      var tanggung_jawab = $('#tanggung_jawab').val()
+      var ketaatan = $('#ketaatan').val()
+      var kejujuran = $('#kejujuran').val()
+      var kerjasama = $('#kerjasama').val()
+      var prakarsa = $('#prakarsa').val()
+      var kepemimpinan = $('#kepemimpinan').val()
+      if (kode == '') {
+        alert('Silahkan Pilih ID Pegawai')
+        $('#idpegawai').focus()
+      } else if (kedisiplinan <= 0 || kedisiplinan > 100 || kedisiplinan == '') {
+        alert('Pastikan Nilai Pada Form Kedisiplinan di isi Dengan BENAR')
+        $('#kedisiplinan').focus()
+      } else if (kesetiaan <= 0 || kesetiaan > 100 || kesetiaan == '') {
+        alert('Nilai Kesetiaan Belum Diisi')
+        $('#kesetiaan').focus()
+      } else if (prestasi_kerja < 0 || prestasi_kerja > 100 || prestasi_kerja == '') {
+        alert('Nilai Prestasi Kerja')
+        $('#prestasi_kerja').focus()
+      } else if (tanggung_jawab < 0 || tanggung_jawab > 100 || tanggung_jawab == ''){
+        alert('Nilai Tanggung Jawab Belum Diisi')
+        $('#tanggung_jawab').focus()
+      } else if (ketaatan < 0 || ketaatan > 100 || ketaatan == '') {
+        alert('Nilai Ketaatan Belum Diisi')
+        $('#ketaatan').focus()
+      } else if (kejujuran < 0 || kejujuran > 100 || kejujuran == '') {
+        alert('Nilai Kejujuran Belum Diisi')
+        $('#kejujuran').focus()
+      } else if (kerjasama < 0 || kerjasama > 100 || kerjasama == '') {
+        alert('Nilai Kerjasama Belum Diisi')
+        $('#kerjasama').focus()
+      } else if (prakarsa < 0 || prakarsa > 100 || prakarsa == '') {
+        alert('Nilai Prakarsa Belum Diisi')
+        $('#prakarsa').focus()
+      } else if (kepemimpinan < 0 || kepemimpinan > 100 || kepemimpinan == '') {
+        alert('Nilai Kepemimpinan Belum Diisi')
+        $('#kepemimpinan').focus()
+      }
+      else {
+        $.ajax({
+        type :'POST',
+        url:'<?=site_url('penilaian/process') ?>',
+        data: {'add' : true,'penilai' : penilai,'kode':kode,'bulan':bulan,'nama':nama,'divisi':divisi,'kedisiplinan':kedisiplinan,'kesetiaan':kesetiaan,'prestasi_kerja':prestasi_kerja,'ketaatan':ketaatan,'tanggung_jawab':tanggung_jawab,'kejujuran':kejujuran,'kerjasama':kerjasama,'prakarsa':prakarsa,'kepemimpinan':kepemimpinan}, 
+        dataType : 'json',
+        success: function(result) {
+          if (result.success == true) {
+            alert('Berhasil Melakukan Penilaian')
+           $('#idpegawai').val('')
+           $('#nama').val('')
+           $('#divisi').val('')
+           $('#kedisiplinan').val('0')
+           $('#kesetiaan').val('0')
+           $('#prestasi_kerja').val('0')
+           $('#tanggung_jawab').val('0')
+           $('#ketaatan').val('0')
+           $('#kejujuran').val('0')
+           $('#kerjasama').val('0')
+           $('#prakarsa').val('0')
+           $('#kepemimpinan').val('0')
+           $('idpegawai').focus('') 
+          }else if(result.success == false){
+           alert('Maaf Pegawai ini Sudah Di Input Nilai')
+           $('#idpegawai').val('')
+           $('#nama').val('')
+           $('#divisi').val('')
+           $('#kedisiplinan').val('0')
+           $('#kesetiaan').val('0')
+           $('#prestasi_kerja').val('0')
+           $('#tanggung_jawab').val('0')
+           $('#ketaatan').val('0')
+           $('#kejujuran').val('0')
+           $('#kerjasama').val('0')
+           $('#prakarsa').val('0')
+           $('#kepemimpinan').val('0')
+           $('idpegawai').focus('')
+          }
+           else { 
+            alert('Maaf Pegawai ini Sudah Di Input Nilai')
+           $('#idpegawai').val('')
+           $('#nama').val('')
+           $('#divisi').val('')
+           $('#kedisiplinan').val('0')
+           $('#kesetiaan').val('0')
+           $('#prestasi_kerja').val('0')
+           $('#tanggung_jawab').val('0')
+           $('#ketaatan').val('0')
+           $('#kejujuran').val('0')
+           $('#kerjasama').val('0')
+           $('#prakarsa').val('0')
+           $('#kepemimpinan').val('0')
+           $('idpegawai').focus('')
+           }
+          } 
+        })
+      } 
+
+  }
+})
+ function handleChange(input) {
+    if (input.value <= 0) alert('nilai Tidak Kurang dari NOL');
+    if (input.value > 100) alert('nilai melebihi 100');
+  }
+
+</script>
