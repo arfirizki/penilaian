@@ -109,19 +109,19 @@
                             <td style="text-align: center;"><?= $m['nilai']; ?></td>
                             <td style="text-align: center;"> 
                              <?php 
-                              if(($m['nilai'] > 90) AND ($m['nilai'] < 101 ))
+                              if(($m['nilai'] >= 91) AND ($m['nilai'] <= 100 ))
                                 {
                                  echo "Amat Baik";
                                 }
-                                elseif(($m['nilai'] > 76) AND ($m['nilai'] < 91))
+                                elseif(($m['nilai'] >= 76) AND ($m['nilai'] <= 90))
                                 {
                                   echo "Baik";
                                 }
-                                elseif(($m['nilai'] > 60) AND ($m['nilai'] < 75))
+                                elseif(($m['nilai'] >= 61) AND ($m['nilai'] <= 75))
                                 {
                                   echo "Cukup";
                                 }
-                                elseif(($m['nilai'] > 50) AND ($m['nilai'] < 61))
+                                elseif(($m['nilai'] >=51) AND ($m['nilai'] <= 60))
                                 {
                                   echo "Sedang";
                                 }
@@ -167,6 +167,17 @@
                       < 50 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: Kurang                   
                       </div>
                   </div>
+                </div> 
+                <div class="card-body">
+                    <div class="form-group row">
+                    <label class="col-sm-12">Tanggapan secara umum pejabat penilai :</label>
+                    <label class="col-sm-12">a. Kelebihan dari yang dinilai : <?=$tanggapan->kelebihan ?></label>
+                    <label class="col-sm-12">b. Kekurangan dari yang dinilai : <?=$tanggapan->kekurangan ?></label>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-12">Pelatihan yang diperlukan untuk yang dinilai : <?=$tanggapan->pelatihan ?></label>
+                      
+                    </div>
                 </div> 
                 <table width="100%">
                   <tr>

@@ -15,7 +15,7 @@
                   <h6 class="m-0 font-weight-bold text-primary"><?php echo $title ?></h6>
                 </div>
                 <?= $this->session->flashdata('message'); ?>
-                <form method="POST" action="<?php echo site_url('kepaladivisi/insert_keDB');?>">
+                <form method="POST" action="<?php echo site_url('penilaian/insert_keDB');?>">
                 <div class="card-body">
                   <div class="form-group row">
                       <label for="tanggal" class="col-sm-4 col-form-label">Bulan </label>
@@ -75,7 +75,23 @@
                       </div>
                 </div> 
                     <?php endforeach; ?>
-
+                <hr>
+                <div class="card-body">
+                  <div class="form-group row">
+                  <label class="col-sm-5">Kelebihan dari yang dinilai</label>
+                  <div class="col-sm-6">  
+                    <textarea name="kelebihan" class="form-control" required=""></textarea>
+                  </div>
+                   <label class="col-sm-5">Kekurangan dari yang dinilai</label>
+                  <div class="col-sm-6">  
+                    <textarea name="kekurangan" class="form-control" required=""></textarea>
+                  </div>
+                   <label class="col-sm-5">Pelatihan yang diperlukan</label>
+                  <div class="col-sm-6">  
+                    <textarea name="pelatihan" class="form-control" required=""></textarea>
+                  </div>
+                  </div>
+                </div>
                 <button type="submit" id="add" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Input</button>
               </div>
                 </div>

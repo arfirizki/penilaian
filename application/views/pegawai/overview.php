@@ -7,9 +7,6 @@
               <!-- Circle Buttons -->
               <div>
                 <div class="card-header py-8 no-print">
-                    <a href="<?=site_url('pegawai/overview')?>" class="btn btn-waring btn-flat">
-                      <i class="fa fa-undo"></i> Back
-                    </a> 
                     <form action="<?=base_url('pegawai/overviewdetail')?>" method="POST">
                           <select id="kategori" name="kategori" class="form-control" required>
                             <option value="">--Pilih Kategori --</option>

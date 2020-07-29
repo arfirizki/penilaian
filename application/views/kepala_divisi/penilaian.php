@@ -75,7 +75,23 @@
                       </div>
                 </div> 
                     <?php endforeach; ?>
-
+                <hr>
+                <div class="card-body">
+                  <div class="form-group row">
+                  <label class="col-sm-5">Kelebihan dari yang dinilai</label>
+                  <div class="col-sm-6">  
+                    <textarea name="kelebihan" class="form-control" required=""></textarea>
+                  </div>
+                   <label class="col-sm-5">Kekurangan dari yang dinilai</label>
+                  <div class="col-sm-6">  
+                    <textarea name="kekurangan" class="form-control" required=""></textarea>
+                  </div>
+                   <label class="col-sm-5">Pelatihan yang diperlukan</label>
+                  <div class="col-sm-6">  
+                    <textarea name="pelatihan" class="form-control" required=""></textarea>
+                  </div>
+                  </div>
+                </div>
                 <button type="submit" id="add" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Input</button>
               </div>
                 </div>

@@ -6,13 +6,13 @@ class Kepaladivisi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        is_logged_in();
         $this->load->model('karyawan_m');
         $this->load->model('kategori_m');
         $this->load->model('jabatan_m');
         $this->load->model('user_m');
         $this->load->model('divisi_m');
         $this->load->model('penilaian_m');
+        $this->load->model('tanggapan_m');
     } 
 
     public function index()
@@ -38,7 +38,7 @@ class Kepaladivisi extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('Kepala_divisi/index', $data);
+        $this->load->view('kepala_divisi/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -54,7 +54,7 @@ class Kepaladivisi extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('Kepala_divisi/pegawai', $data);
+        $this->load->view('kepala_divisi/pegawai', $data);
         $this->load->view('templates/footer');
     }
     public function kode($data)
@@ -86,7 +86,7 @@ class Kepaladivisi extends CI_Controller
     {   
         $data = $this->input->post(null, TRUE);
         $jabatan = $this->input->post('jabatan');
-        $kode = $this->kode($kode);
+        $kode = $this->kode($data);
         $this->karyawan_m->add($data,$kode);
         $this->user_m->add($data,$level = "$jabatan",$kode);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Pegawai added!</div>');
@@ -120,6 +120,9 @@ class Kepaladivisi extends CI_Controller
                 $bulan = $this->input->post('bulan');
                 $divisi = $this->input->post('divisi');
                 $kategori = $this->input->post('kategori');
+                $kelebihan = $this->input->post('kelebihan');
+                $kekurangan = $this->input->post('kekurangan');
+                $pelatihan = $this->input->post('pelatihan');
                 $row = [];
                 foreach ($nilai as $key => $value) {
                     array_push($row, array(
@@ -131,6 +134,14 @@ class Kepaladivisi extends CI_Controller
                     )
                 );
                 }
+                $data = [
+                    'kode' =>$kode,
+                    'bulan' => $bulan,
+                    'kelebihan' => $kelebihan,
+                    'kekurangan' => $kekurangan,
+                    'pelatihan' => $pelatihan,
+                ];
+                $tanggapan = $this->db->insert('tanggapan',$data);
                 $test= $this->db->insert_batch('nilai_detail', $row); // fungsi dari codeigniter untuk menyimpan multi array
             
                 if($test){
@@ -185,6 +196,7 @@ class Kepaladivisi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['kode' => $this->session->userdata('kode')])->row_array();
         $data['nilai'] = $this->penilaian_m->getdetail($params,$bulan)->result_array();
         $data['data'] = $this->penilaian_m->getdetail($params,$bulan)->row();
+        $data['tanggapan'] = $this->tanggapan_m->get($params,$bulan)->row();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

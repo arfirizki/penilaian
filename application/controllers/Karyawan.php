@@ -57,7 +57,7 @@ class Karyawan extends CI_Controller
     {   
         $data = $this->input->post(null, TRUE);
         $jabatan = $this->input->post('jabatan');
-        $kode = $this->kode($kode);
+        $kode = $this->kode($data);
         $this->karyawan_m->add($data,$kode);
         $this->user_m->add($data,$level = "$jabatan",$kode);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Pegawai added!</div>');

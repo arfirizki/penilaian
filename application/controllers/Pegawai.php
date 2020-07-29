@@ -13,6 +13,7 @@ class Pegawai extends CI_Controller
         $this->load->model('user_m');
         $this->load->model('divisi_m');
         $this->load->model('penilaian_m');
+        $this->load->model('tanggapan_m');
     } 
 
     public function index()
@@ -25,7 +26,7 @@ class Pegawai extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('Pegawai/index', $data);
+        $this->load->view('pegawai/index', $data);
         $this->load->view('templates/footer');
     }
     public function overview()
@@ -93,6 +94,7 @@ class Pegawai extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['kode' => $this->session->userdata('kode')])->row_array();
         $data['nilai'] = $this->penilaian_m->getdetail($params,$bulan)->result_array();
         $data['data'] = $this->penilaian_m->getdetail($params,$bulan)->row();
+        $data['tanggapan'] = $this->tanggapan_m->get($params,$bulan)->row();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
